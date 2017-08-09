@@ -168,6 +168,17 @@ Fixed. Test contracts were moved to `contracts/test` in [[pull/133]](https://git
 
 ## 3.4 Minor
 
+### Token Base Units
+
+It is not mentioned in the whitepaper or the Solidity code audited that token denominations are all expressed in the smallest possible denominations. This should be explicit as it can result in orders being rejected from relayers' order books due to too low of fees, or users accidentally placing, filling, or cancelling smaller amounts of an order than anticipated. 
+
+It is worth noting that 0x.js provides thorough documentation on token base units, but we believe this same level of documentation should be avaliable to those interfacing directly with the smart contracts.
+
+**Recommendation**
+
+Include more documentation on token denominations in the whitepaper and in the code. 
+<br/><br/><br/>
+
 ### Negative maker fees are not possible
 
 The `makerFee` value is a uint, making it impossible to give negative fees, which is sometimes useful for incentivizing liquidity.
